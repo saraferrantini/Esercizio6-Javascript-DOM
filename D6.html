@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      body div,
+      footer {
+        padding: 1rem;
+      }
+
+      footer {
+        padding: 1rem;
+        background-color: black;
+        color: white;
+      }
+
+      .myHeading {
+        color: #ff00d6;
+      }
+      .Green {
+        background-color: #4caf50;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <h1 onclick="makeItClickable()">Questo è il titolo della pagina</h1>
+      <h2>Questo è il sottotitolo della pagina</h2>
+    </div>
+
+    <div>
+      <hr />
+
+      <ul id="firstList">
+        <li>1st</li>
+        <li>2nd</li>
+        <li>3rd</li>
+      </ul>
+
+      <ul id="secondList">
+        <li>1st</li>
+        <li>2nd</li>
+        <li>3rd</li>
+      </ul>
+
+      <a href="https://epicode.com/it/">Questo link porta al sito di Epicode</a>
+
+      <div>
+        <p>Questo testo è un placeholder per gli esercizi</p>
+      </div>
+    </div>
+
+    <div>
+      <p>Anche questo testo è per gli esercizi</p>
+      <h2 id="changeMyColor" style="color: #ff00d6">Apri questa pagina con VSCode per scoprire gli esercizi</h2>
+    </div>
+
+    <div id="tableArea"></div>
+
+    <footer>
+      <h3>
+        DOM Manipulation is super
+        <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents"
+          >AWESOME!</a
+        >
+      </h3>
+    </footer>
+    <script>
+      /* ESERCIZIO 1
+       Scrivi una funzione per cambiare il titolo della pagina in qualcos'altro
+       
+    // */
+      // TEXTCONTENT O INNERTEXT PER CAMBIARE IL TESTO
+
+      // creiamo una variabile chiamata changeTitle a cui associamo una funzione.
+      const changeTitle = function () {
+        // dentro la funzione indichiamo con document. l'html e con querySelector per selezionare il primo elemento h1 presente nell'html
+        const h1Element = document.querySelector("h1");
+        h1Element.innerText = "Nuovo Titolo";
+      };
+
+      changeTitle();
+
+      /* ESERCIZIO 2
+       Scrivi una funzione per aggiungere al titolo della pagina una classe "myHeading"
+    */
+      //  CLASSLIST PER AGGIUNGERE LA CLASSE
+
+      // creiamo una variabile chiamata addClassToTitle a cui associamo una funzione.
+      const addClassToTitle = function () {
+        // con document.querySelector;indichiamo dove dobbiamo agire
+        const h1Element = document.querySelector("h1");
+        // per sicurezza inseriamo remove, così da levare un'ipotetica classe già presente
+        h1Element.classList.remove("myClass");
+        // con classList aggiungiamo la classe
+        h1Element.classList.add("myHeading");
+      };
+
+      addClassToTitle();
+
+      /* ESERCIZIO 3
+       Scrivi una funzione che cambi il testo dei p figli di un div
+      */
+
+      const changePcontent = function () {
+        // Utilizzando document.querySelectorAll('div p'), stai selezionando tutti gli elementi <p>
+        // che si trovano all'interno di un elemento <div> nel documento,il risultato viene assegnato alla variabile myParagraphs
+        const myParagraphs = document.querySelectorAll("div p");
+        // Utilizzo un ciclo for per iterare attraverso tutti gli elementi <p> presenti
+        for (let i = 0; i < myParagraphs.length; i++) {
+          // Per ogni iterazione, ottengo l'elemento <p> corrente che assegno alla variabile paragraphElement
+          const paragraphElement = myParagraphs[i];
+          // imposti il testo degli elementi <p> al valore "nuovo testo!" durante ogni iterazione del ciclo for
+          myParagraphs[i].innerText = "Nuovo Testo";
+        }
+      };
+      changePcontent();
+
+      // dettagli ciclo for
+      // 1) INIZIALIZZAZIONE: Viene dichiarata una variabile i e le viene assegnato il valore iniziale di 0.
+      //  Questa variabile funge da contatore per tenere traccia dell'iterazione corrente.
+
+      // 2)CONDIZIONE: La condizione che determina se il ciclo deve continuare o terminare.
+      // Il ciclo continuerà ad eseguirsi fintanto che la variabile i è minore della lunghezza dell'array paragraphs
+
+      // 3)INCREMENTO:Dopo ogni iterazione del ciclo, la variabile i viene incrementata di 1, avanzando al prossimo elemento nell'array paragraphs.
+      // Una volta che i diventa uguale o superiore alla lunghezza di paragraphs, il ciclo si interrompe.
+
+      /* ESERCIZIO 4
+       Scrivi una funzione che cambi la proprietà href di ogni link (tranne quello nel footer) con il valore https://www.google.com
+      */
+
+      const changeUrls = function () {
+        // Utilizzando document.querySelectorAll('a:not(footer a)'), seleziono tutti gli elementi <a> che non sono discendenti di un elemento <footer>.
+        const links = document.querySelectorAll("a:not(footer a)");
+        // un ciclo for per iterare attraverso tutti gli elementi <a> presenti.Durante ogni iterazione,
+        for (let i = 0; i < links.length; i++) {
+          // imposto l'attributo href di ciascun elemento <a>
+          links[i].href = "https://www.google.com"; // al valore 'https://www.google.com', tutti i link verranno modificati per puntare a Google.
+        }
+      };
+      changeUrls();
+
+      // dettagli ciclo for:
+      //  1)iNIZIALIZZAZIONE.Viene dichiarata una variabile i e le viene assegnato il valore iniziale di 0.Questa variabile viene utilizzata
+      //  come contatore per tenere traccia dell'iterazione corrente.
+
+      // 2)CONDIZINE: condizione che determina se il ciclo deve continuare o terminare.Il ciclo continuerà ad eseguirsi fintanto che la variabile i
+      //  è minore della lunghezza dell'array links.il ciclo continuerà finché ci sono elementi <a> rimanenti da attraversare.
+
+      // 3)INCREMENTO:Dopo ogni iterazione del ciclo, la variabile i viene incrementata di 1. Questo passo avanza al prossimo elemento nell'array links
+      // Una volta che [i] diventa uguale o superiore alla lunghezza di links, il ciclo si interrompe.
+
+      /* ESERCIZIO 5
+       Scrivi una funzione che aggiunga un nuovo elemento lista alla seconda lista non ordinata
+    */
+
+      // TEXTCONTENT PER AGGIUNGERE TESTO
+      // APPENDCHILD USATO PER AGGIUNGERE NUOVO ELEMENTO
+
+      const addToTheSecond = function () {
+        // Ottiengo prima tutte le liste non ordinate nella pagina, infatti uso querySelectorAll
+        const listeNonOrdinate = document.querySelectorAll("ul");
+
+        // Verifico se ci sono almeno due liste non ordinate
+        if (listeNonOrdinate.length >= 2) {
+          // Seleziono la seconda lista non ordinata e crea un nuovo elemento lista
+          const secondaLista = listeNonOrdinate[1];
+          const nuovoElementoLista = document.createElement("li");
+
+          // Aggiungi un testo al nuovo elemento lista
+          nuovoElementoLista.textContent = "nuovo elemento lista";
+
+          // Aggiungi il nuovo elemento lista alla seconda lista non ordinata con appenChild
+          secondaLista.appendChild(nuovoElementoLista);
+        }
+      };
+
+      addToTheSecond();
+
+      /* ESERCIZIO 6
+       Scrivi una funzione che aggiunga un paragrafo al primo div
+    */
+
+      // creo una variabile a cui associa una funzione
+      // dentro la funzione creo un'altra variabile divElement che dentro contiene il primo div che incontra nel dom
+      const addParagraph = function () {
+        // questa riga di codice cerca il primo elemento <div> nel documento HTML e lo assegna alla variabile divElement
+        const divElement = document.getElementsByTagName("div")[0];
+        // creo un nuovo elemento di tipo p
+        const nuovoParagrafo = document.createElement("p");
+        // Aggiungo al nuovo paragrafo il testo nuovo paragrafo
+        nuovoParagrafo.textContent = "Nuovo paragrafo";
+        // con appendChild aggiunge il nuovo paragrafo al primo div
+        divElement.appendChild(nuovoParagrafo);
+      };
+
+      addParagraph();
+
+      /* ESERCIZIO 7
+       Scrivi una funzione che faccia scomparire la prima lista non ordinata
+    */
+
+      const hideFirstUl = function () {
+        // La funzione inizia cercando un elemento nel documento HTML con l'ID 'firstList' utilizzando document.getElementById('firstList').
+        const ul = document.getElementById("firstList");
+        // viene utilizzato il metodo remove() sull'elemento <ul> ottenuto dalla riga precedente.
+        ul.remove();
+      };
+      hideFirstUl();
+
+      /* ESERCIZIO 8 
+       Scrivi una funzione che renda verde il background di ogni lista non ordinata
+      */
+
+      const paintItGreen = function () {
+        // La funzione inizia cercando tutti gli elementi <ul> nel documento utilizzando document.querySelectorAll("ul").
+        const listElements = document.querySelectorAll("ul");
+        // Ciclo for per attraversare gli elementi <ul> e ispezionarli
+        for (let i = 0; i < listElements.length; i++) {
+          // Per ogni elemento <ul> nell'iterazione corrente, viene utilizzato il metodo classList.add("bgGreen")
+          // per aggiungere la classe CSS "Green" all'elemento.
+
+          listElements[i].classList.add("Green");
+        }
+      };
+
+      paintItGreen();
+
+      /* ESERCIZIO 9
+       Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
+      */
+
+      const makeItClickable = function () {
+        const title = document.querySelector("h1");
+        title.onclick = function () {
+          title.classList.toggle("myHeading");
+        };
+      };
+
+      // makeItClickable();
+
+      /* ESERCIZIO 10
+       Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
+      */
+
+      const revealFooterLink = function (content) {
+        // La funzione inizia ottenendo l'elemento <footer> nel documento utilizzando document.querySelector('footer')
+        // Questo elemento viene assegnato alla variabile footer.
+        const footer = document.querySelector("footer");
+        // Viene impostato lo stile del cursore per il footer su "pointer". Questo per indicare che l'elemento è cliccabile.
+        footer.style.cursor = "pointer";
+        // Quando l'elemento viene cliccato, viene eseguita la funzione definita al suo interno
+        footer.onclick = function () {
+          // All'interno della funzione gestore di eventi, viene ottenuto l'elemento <a> (link) all'interno del footer utilizzando document.querySelector('footer a').
+          // Questo elemento viene assegnato alla variabile link.
+          const link = document.querySelector("footer a");
+          // Viene ottenuto l'attributo href dell'elemento <a> utilizzando il metodo getAttribute. Questo rappresenta l'URL del link.
+          // L'URL viene assegnato alla variabile URL.
+          const URL = link.getAttribute("href");
+
+          alert(URL); // Viene visualizzato un alert che contiene l'URL del link.
+        };
+      };
+      revealFooterLink();
+
+      /* ESERCIZIO 11
+       Crea una funzione che crei una tabella nell'elemento con id "tableArea". 
+       La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
+    */
+
+      const generateTable = function () {};
+
+      /* ESERCIZIO 12
+       Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
+    */
+
+      const addRow = function () {};
+
+      /* ESERCIZIO 14
+      Crea una funzione che nasconda le immagini della tabella quando eseguita
+    */
+
+      const hideAllImages = function () {};
+
+      /* EXTRA ESERCIZIO 15
+      Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
+    */
+
+      const changeColorWithRandom = function () {
+        // La funzione inizia ottenendo l'elemento con l'ID "changeMyColor" utilizzando document.getElementById('changeMyColor').
+        // Questo elemento viene assegnato alla variabile elementToChange.
+        let elementToChange = document.getElementById("changeMyColor");
+        // Viene assegnato un gestore di eventi al clic sull'elemento elementToChange.
+        elementToChange.onclick = function () {
+          const red = Math.round(Math.random() * 255); // vengono generati tre numeri casuali (red, green, blue) compresi tra 0 e 255.
+          const green = Math.round(Math.random() * 255);
+          const blue = Math.round(Math.random() * 255);
+
+          const randomColor = `rgb(${red},${green},${blue})`; // numeri che vengono utilizzati per creare una stringa rappresentante un colore casuale nel formato rgb(red, green, blue)
+          elementToChange.style.userSelect = "none"; // elimina la possibilità di selezionare il testo per evitare che la selezione del testo nasconda il colore.
+          elementToChange.style.cursor = "pointer"; // cambiando il cursore quando si passa sopra l'elemento, indicando che è cliccabile.
+          elementToChange.style.color = randomColor; // Imposta la proprietà CSS color (che rappresenta il colore del testo) a randomColor, il colore generato casualmente.
+        };
+      };
+
+      changeColorWithRandom();
+    </script>
+  </body>
+</html>
