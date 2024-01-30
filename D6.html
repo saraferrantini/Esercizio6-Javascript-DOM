@@ -235,7 +235,8 @@
           // Per ogni elemento <ul> nell'iterazione corrente, viene utilizzato il metodo classList.add("bgGreen")
           // per aggiungere la classe CSS "Green" all'elemento.
 
-          listElements[i].classList.add("Green");
+          // listElements[i].classList.add("Green");
+          listElements[i].style = "background-color:green";
         }
       };
 
@@ -258,7 +259,7 @@
        Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
       */
 
-      const revealFooterLink = function (content) {
+      const revealFooterLink = function () {
         // La funzione inizia ottenendo l'elemento <footer> nel documento utilizzando document.querySelector('footer')
         // Questo elemento viene assegnato alla variabile footer.
         const footer = document.querySelector("footer");
