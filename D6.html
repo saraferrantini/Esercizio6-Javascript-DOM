@@ -232,10 +232,6 @@
         const listElements = document.querySelectorAll("ul");
         // Ciclo for per attraversare gli elementi <ul> e ispezionarli
         for (let i = 0; i < listElements.length; i++) {
-          // Per ogni elemento <ul> nell'iterazione corrente, viene utilizzato il metodo classList.add("bgGreen")
-          // per aggiungere la classe CSS "Green" all'elemento.
-
-          // listElements[i].classList.add("Green");
           listElements[i].style = "background-color:green";
         }
       };
@@ -248,12 +244,17 @@
 
       const makeItClickable = function () {
         const title = document.querySelector("h1");
+        // agganciamo la funzionalità che farà eseguire delle istruzioni al momento del click
         title.onclick = function () {
-          title.classList.toggle("myHeading");
+          // rimuoviamo l'ultima lettera al click
+          title.innerText = title.innerText.slice(0, -1);
+
+          // title.innerText = "Marco" (modifichiamo l'h1)
+          // title.classList.toggle("myHeading") (facciamo si che il titolo prenda la classe myheading quando si clicca)
         };
       };
 
-      // makeItClickable();
+      makeItClickable();
 
       /* ESERCIZIO 10
        Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
@@ -284,7 +285,14 @@
        La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
     */
 
-      const generateTable = function () {};
+      // const generateTable = function () {
+      // const table = document.createElement("table");
+      // const thead = document.createElement("thead");
+      // const tr = document.createElement("tr");
+
+      // const hElements = ["immagine", "nome prodotto", "quantità", "prezzo"];
+
+      // };
 
       /* ESERCIZIO 12
        Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
